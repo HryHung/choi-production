@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Chơi.Production 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Be+Vietnam+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Logo Chơi.Production"><span>Chơi.Production</span></a>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html" data-page="index.html">Home</a></li>
+      <li><a href="about.html" data-page="about.html">About Us</a></li>
+      <li><a href="projects.html" data-page="projects.html">Projects</a></li>
+      <li><a href="contact.html" data-page="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="cta" href="contact.html">Let’s talk</a>
+</header>
+<main class="page-inner">
+<!-- KẾT -->
+<section id="lien-he" class="purple">
+  <div class="wrap">
+    <div class="sheet ket">
+      <div class="mid reveal">
+        <div class="k">KÍNH TRÌNH</div>
+        <h1>QUÝ CÔNG TY XEM XÉT<br>&amp; CÙNG CHƠI</h1>
+        <p>Có ý tưởng trong đầu? Cứ nhắn, mình cùng làm cho nó thành thật.</p>
+      </div>
+      <div class="bot reveal">
+        <div class="hotline">
+          <div class="t">ĐƯỜNG DÂY NÓNG</div>
+          <div>Email: <a href="mailto:choilab.creative@gmail.com">choilab.creative@gmail.com</a></div>
+          <div>Instagram / Threads: @choilab.creative</div>
+          <div>Facebook: CHOI LAB · TikTok: @choilabcreative</div>
+        </div>
+        <div></div>
+        <div class="stamp">
+          <div style="font-weight:700">TM. ĐOÀN SẢN XUẤT</div>
+          <div style="font-weight:700">TRƯỞNG NHÓM</div>
+          <div class="s"><img src="assets/logo.jpg" alt="Dấu Chơi.Production"></div>
+          <div style="font-style:italic;font-weight:700;margin-top:8px">Choi Production</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>© <span id="year"></span> Chơi.Production. Good ideas. Good people. Good work.</footer>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+  var bar = document.getElementById('progress');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[data-page]'));
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  var lastY = window.scrollY;
+  links.forEach(function(link){
+    var active = link.getAttribute('data-page') === currentPage;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page');
+  });
+  function onScroll(){
+    var y = window.scrollY;
+    if (y > 240 && y > lastY) nav.classList.add('hidden');
+    else if (y < lastY || y <= 240) nav.classList.remove('hidden');
+    lastY = y;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(event){
+      var target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      if (target.id) history.replaceState(null, '', '#' + target.id);
+    });
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function(element){ element.classList.add('in'); });
+  } else {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    reveals.forEach(function(element){ observer.observe(element); });
+  }
+  var words = ['Content / Mạng xã hội','Nhiếp ảnh','Quay phim','Thiết kế','Thương hiệu'];
+  var phrase = document.getElementById('phrase');
+  if (phrase && !reduce) {
+    var index = 0;
+    phrase.textContent = words[0];
+    window.setInterval(function(){
+      phrase.classList.add('fade');
+      window.setTimeout(function(){
+        index = (index + 1) % words.length;
+        phrase.textContent = words[index];
+        phrase.classList.remove('fade');
+      }, 350);
+    }, 2200);
+  }
+})();
+</script>
+</body>
+</html>

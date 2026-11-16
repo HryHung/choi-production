@@ -1,0 +1,198 @@
+:root{--ink:#141414;--paper:#F6F1E1;--purple:#C546C6;--idblue:#4A90D9;--red:#B3261E;--blue:#1F5FBF;--green:#16795F;--accent:#141414;--nav-h:72px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Noto Serif',Georgia,serif;line-height:1.45}
+img,video{display:block;max-width:100%}
+.vlink{display:block;text-align:center;margin-top:10px;font-family:'Be Vietnam Pro',Arial,sans-serif;font-size:14px;font-style:italic;color:var(--accent);text-underline-offset:3px}
+a{color:var(--ink)}
+h1,h2,h3,p{margin:0}
+.sans{font-family:'Be Vietnam Pro',Arial,sans-serif}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px #FFFFFF}
+
+/* progress + nav */
+.progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--purple);z-index:60}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 32px;background:var(--paper);border-bottom:2px solid var(--ink);transition:transform .4s ease}
+.nav.hidden{transform:translateY(-130%)}
+.nav .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:900;font-size:18px}
+.nav .brand img{height:44px;width:auto;background:#FFFFFF}
+.nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0}
+.nav ul a{position:relative;text-decoration:none;font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:600;font-size:15px;padding:6px 0}
+.nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--purple);transform:scaleX(0);transform-origin:left;transition:transform .28s ease}
+.nav ul a:hover::after,.nav ul a.active::after{transform:scaleX(1)}
+.cta{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:700;font-size:15px;text-decoration:none;background:var(--ink);color:var(--paper);padding:12px 20px;border:2px solid var(--ink);min-height:44px;display:inline-flex;align-items:center}
+.cta:hover{background:var(--purple);color:var(--ink)}
+
+/* sheet = one "giấy tờ" */
+section{scroll-margin-top:calc(var(--nav-h) + 16px)}
+.wrap{max-width:1180px;margin:0 auto;padding:48px 24px}
+.sheet{border:2.5px solid var(--ink);padding:48px clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:32px}
+.purple{background:var(--purple)}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.head .blk{text-align:center;font-weight:700;font-size:17px;line-height:1.35}
+.head .rule{height:2px;background:var(--ink);margin:6px auto 0}
+.head .meta{font-weight:400;font-style:italic;font-size:15px;margin-top:8px}
+.field{display:flex;gap:12px;align-items:baseline;border-bottom:1.5px dotted var(--ink);padding-bottom:4px;font-size:17px}
+.field .lb{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:300;font-size:15px;width:160px;flex-shrink:0}
+.field .v{font-style:italic;font-weight:700}
+.dot{font-style:italic;border-bottom:1.5px dotted var(--ink);padding-bottom:4px}
+.lbl{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:700;font-size:17px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 48px}
+.sign{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-size:16px;flex-wrap:wrap}
+.sign .who{text-align:center}
+.sign .name{font-style:italic;font-weight:700;margin-top:44px}
+
+/* cover */
+.cover h1{font-weight:900;font-size:clamp(56px,10vw,112px);line-height:1.02;letter-spacing:-1px;text-align:center}
+.cover .sub{text-align:center;margin-top:14px;font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:300;font-size:24px;letter-spacing:3px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
+.star{width:26px;height:26px;animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.phrase{font-weight:600;font-style:italic;letter-spacing:0;min-width:12ch;text-align:left;transition:opacity .35s ease}
+.phrase.fade{opacity:0}
+.cover .bottom{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:56px;margin-top:24px}
+.cover .gom{display:flex;flex-direction:column;gap:10px;font-size:18px}
+.cover .gom .t{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.box{display:inline-block;width:14px;height:14px;border:1.5px solid var(--ink);vertical-align:-2px}
+.box.on{background:var(--ink)}
+.cover .faint{position:absolute;right:20px;top:74px;width:250px;transform:rotate(-9deg);mix-blend-mode:multiply;opacity:.3}
+
+/* marquee */
+.marquee{overflow:hidden;background:var(--ink);color:var(--paper);border-block:2px solid var(--ink)}
+.marquee .track{display:flex;width:max-content;gap:48px;padding:14px 0;animation:mq 30s linear infinite;font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:600;font-size:18px;white-space:nowrap}
+.marquee .track span::after{content:"✦";margin-left:48px;color:var(--purple)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ly lich */
+.ll-top{display:flex;flex-direction:column;align-items:center;gap:28px}
+.intro{display:grid;grid-template-columns:150px minmax(0,1fr);gap:40px;align-items:start;font-size:18px}
+.idphoto{width:150px;height:200px;border:1.5px solid var(--ink);background:var(--idblue);display:flex;align-items:center;justify-content:center;padding:12px}
+.idphoto div{background:#FFFFFF;padding:6px;width:100%}
+.intro .idphoto{padding:0;overflow:hidden}
+.intro .idphoto img{width:100%;height:100%;object-fit:cover}
+.ll-top h1{margin-top:36px;font-weight:900;font-size:clamp(34px,5vw,48px);line-height:1.15}
+.ll-body{display:grid;grid-template-columns:240px minmax(0,1fr);gap:22px 32px;font-size:18px}
+.mile .row{display:flex;justify-content:space-between;gap:24px;font-style:italic;font-weight:700;border-bottom:1.5px dotted var(--ink);padding-bottom:4px}
+.mile .d{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:300;font-size:16px;padding-top:4px}
+
+/* ekip */
+.title-c{text-align:center}
+.title-c h1{font-weight:900;font-size:clamp(32px,5vw,52px)}
+.title-c p{font-weight:700;font-size:17px;margin-top:4px}
+.tbl{border:1.5px solid var(--ink);font-size:17px}
+.tr{display:grid;grid-template-columns:70px 150px minmax(0,1.1fr) minmax(0,1.4fr) minmax(0,1.2fr);align-items:center}
+.tr+.tr{border-top:1.5px solid var(--ink)}
+.tr>div{padding:12px}
+.th{background:var(--ink);color:var(--paper);font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:600;font-size:15px}
+.tr .stt{text-align:center;font-weight:700}
+.tr .ph{display:flex;justify-content:center;align-items:center;padding:10px}
+.tr .ph img{width:112px;height:112px;aspect-ratio:1/1;flex-shrink:0;object-fit:cover;object-position:center;border:1.5px solid var(--ink)}
+.tr .nm{font-style:italic;font-weight:700;font-size:19px}
+.tr .rl{font-style:italic}
+.tr .vn{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:300;font-size:15px}
+
+/* reports */
+.bc h2{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:700;font-size:19px}
+.bc .acc{color:var(--accent)}
+.bc .txt{font-style:italic;line-height:1.75;border-bottom:1.5px dotted var(--ink);padding-bottom:6px}
+.vid-v{width:min(100%,420px);aspect-ratio:9/16;margin:0 auto;object-fit:cover;background:#000000;border:1.5px solid var(--ink)}
+.vid-h{width:100%;aspect-ratio:16/9;object-fit:contain;background:#000000;border:1.5px solid var(--ink)}
+.thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.thumbs img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1.5px solid var(--ink)}
+.res{display:grid;border:1.5px solid var(--ink)}
+.res>div{padding:20px;display:flex;flex-direction:column;gap:6px}
+.res>div+div{border-left:1.5px solid var(--ink)}
+.res .k{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:300;font-size:14px}
+.res .v{font-weight:900;font-size:26px;line-height:1.25;color:var(--accent)}
+
+/* ket */
+.ket{min-height:640px}
+.ket .mid{text-align:center;margin:auto 0}
+.ket .mid .k{font-family:'Be Vietnam Pro',Arial,sans-serif;font-weight:600;font-size:20px;letter-spacing:4px}
+.ket h1{margin-top:18px;font-weight:900;font-size:clamp(34px,6.4vw,76px);line-height:1.1}
+.ket .mid p{margin-top:16px;font-style:italic;font-size:20px}
+.ket .bot{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;font-size:17px}
+.hotline{display:flex;flex-direction:column;gap:8px;font-family:'Be Vietnam Pro',Arial,sans-serif;font-size:16px}
+.hotline .t{font-weight:700;letter-spacing:1px}
+.hotline div:not(.t){border-bottom:1.5px dotted var(--ink);padding-bottom:4px;overflow-wrap:anywhere}
+.stamp{text-align:center;justify-self:end}
+.stamp .s{height:120px;display:flex;align-items:center;justify-content:center}
+.stamp img{width:170px;transform:rotate(-10deg);mix-blend-mode:multiply}
+footer{text-align:center;padding:24px;font-family:'Be Vietnam Pro',Arial,sans-serif;font-size:14px;border-top:2px solid var(--ink)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:880px){.nav ul{display:flex;gap:12px}}
+@media (max-width:860px){
+.grid2,.cover .bottom,.intro,.ll-body,.ket .bot,.thumbs,.res{grid-template-columns:1fr}
+.res>div+div{border-left:none;border-top:1.5px solid var(--ink)}
+.cover .faint{position:static;margin:0 0 0 auto;width:180px}
+.ll-top h1{margin-top:0}
+.tbl{border:none}
+.tr{grid-template-columns:80px minmax(0,1fr);border:1.5px solid var(--ink);margin-bottom:12px}
+.tr+.tr{border-top:1.5px solid var(--ink)}
+.tr.th{display:none}
+.tr .stt{display:none}
+.tr .ph{grid-row:span 3}
+.tr>div{padding:6px 10px}
+}
+/* mobile */
+html,body{overflow-x:clip}
+.field .v,.hotline a{overflow-wrap:anywhere}
+.mile .row span:last-child{flex-shrink:0}
+@media (max-width:860px){
+.intro .idphoto{justify-self:start}
+.ket{min-height:auto}
+.res{grid-template-columns:1fr!important}
+.tr{grid-template-columns:96px minmax(0,1fr)}
+.tr .ph img{width:76px;height:76px}
+}
+@media (max-width:600px){
+:root{--nav-h:60px}
+.nav{padding:0 14px;gap:12px}
+.nav .brand{font-size:16px;gap:8px}
+.nav .brand img{height:36px}
+.cta{padding:8px 14px;font-size:14px}
+.wrap{padding:24px 12px}
+.sheet{padding:28px 16px;gap:24px;border-width:2px}
+.head{flex-direction:column;align-items:center;gap:16px}
+.head .blk{font-size:14px;width:100%}
+.head .blk div[style*="font-size:16px"]{font-size:13px!important}
+.head .meta{font-size:13px}
+.cover h1{font-size:clamp(42px,13vw,56px)}
+.cover .sub{font-size:16px;letter-spacing:1.5px}
+.cover .faint{width:130px}
+.field{flex-direction:column;align-items:flex-start;gap:2px;font-size:16px!important}
+.field .lb{width:auto;font-size:13px}
+.cover .gom{font-size:16px}
+.intro,.ll-body,.ll-top,.mile{font-size:16px}
+.ll-top div[style*="font-size:18px"]{font-size:15px!important}
+.ll-top div[style*="font-size:17px"]{font-size:14px!important}
+.mile .row{flex-wrap:wrap;gap:4px 12px}
+.mile .d{font-size:14px}
+.sign{justify-content:center;text-align:center}
+.sign p{font-size:21px!important}
+.title-c p{font-size:15px}
+.tbl{font-size:15px}
+.tr .nm{font-size:17px}
+.tr .vn{font-size:14px}
+.bc h2{font-size:17px}
+.res>div{padding:14px}
+.res .v{font-size:21px}
+.ket .mid .k{font-size:15px;letter-spacing:2px}
+.ket .mid p{font-size:17px}
+.hotline{font-size:14px}
+.marquee .track{font-size:15px;gap:32px;padding:10px 0}
+.marquee .track span::after{margin-left:32px}
+footer{font-size:12px;padding:18px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.reveal{opacity:1;transform:none;transition:none}
+.star,.marquee .track{animation:none}
+.nav{transition:none}
+.phrase{transition:none}
+}
+
+@media (max-width:600px){.nav{padding:0 10px;gap:8px}.nav .brand{font-size:13px;gap:5px}.nav .brand img{height:30px}.nav ul{gap:clamp(7px,2.4vw,12px)}.nav ul a{font-size:clamp(10px,2.8vw,13px)}.nav .cta{display:none}}
+.page-inner{padding-top:var(--nav-h)}

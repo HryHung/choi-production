@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home | Chơi.Production 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Be+Vietnam+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Logo Chơi.Production"><span>Chơi.Production</span></a>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html" data-page="index.html">Home</a></li>
+      <li><a href="about.html" data-page="about.html">About Us</a></li>
+      <li><a href="projects.html" data-page="projects.html">Projects</a></li>
+      <li><a href="contact.html" data-page="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="cta" href="contact.html">Let’s talk</a>
+</header>
+<main class="page-home">
+<!-- BÌA -->
+<section id="bia" class="purple" style="padding-top:var(--nav-h)">
+  <div class="wrap">
+    <div class="sheet cover" style="position:relative">
+      <div class="head">
+        <div class="blk"><div>ĐOÀN SẢN XUẤT</div><div>CHƠI.PRODUCTION</div><div class="rule" style="width:100px"></div></div>
+        <div class="blk"><div>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div><div style="font-size:16px">Độc lập - Tự do - Hạnh phúc</div><div class="rule" style="width:210px"></div></div>
+      </div>
+      <img class="faint" src="assets/logo.jpg" alt="" aria-hidden="true">
+      <div class="reveal">
+        <h1>HỒ SƠ<br>NĂNG LỰC</h1>
+        <div class="sub">
+          <span>[PORTFOLIO 2026]</span>
+          <span class="phrase" id="phrase" aria-live="off">Content / Mạng xã hội · Nhiếp ảnh · Quay phim · Thiết kế · Thương hiệu</span>
+        </div>
+      </div>
+      <div class="bottom reveal">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="field" style="font-size:19px"><span class="lb">Tên đơn vị:</span><span class="v">Chơi.Production</span></div>
+          <div class="field" style="font-size:19px"><span class="lb">Lĩnh vực:</span><span class="v">Content / Mạng xã hội · Nhiếp ảnh · Quay phim · Thiết kế · Thương hiệu</span></div>
+          <div class="field"><span class="lb">Quy mô:</span><span class="sans" style="display:flex;gap:22px;flex-wrap:wrap"><span>Lớn <span class="box"></span></span><span>Nhỏ <span class="box"></span></span><span style="font-weight:600">Có tâm <span class="box on"></span></span></span></div>
+          <div class="field" style="font-size:19px"><span class="lb">Hòm thư điện tử:</span><span class="v">choilab.creative@gmail.com</span></div>
+          <div class="field" style="font-size:19px"><span class="lb">Instagram / Threads:</span><span class="v">@choilab.creative</span></div>
+          <div class="field" style="font-size:19px"><span class="lb">Facebook / TikTok:</span><span class="v">CHOI LAB · @choilabcreative</span></div>
+        </div>
+        <div class="gom">
+          <div class="t">HỒ SƠ GỒM CÓ</div>
+          <a class="dot" href="about.html#ly-lich" style="text-decoration:none">1. Sơ yếu lý lịch đơn vị</a>
+          <a class="dot" href="about.html#ekip" style="text-decoration:none">2. Danh sách ê-kíp</a>
+          <a class="dot" href="projects.html#du-an" style="text-decoration:none">3. Báo cáo dự án (03 dự án)</a>
+          <div class="dot">&#160;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>1. Sáng tạo nội dung / Mạng xã hội</span><span>2. Nhiếp ảnh</span><span>3. Quay phim (Videography)</span><span>4. Thiết kế</span><span>5. Xây dựng thương hiệu</span><span>6. Và mọi thứ dính tới sáng tạo</span>
+    <span>1. Sáng tạo nội dung / Mạng xã hội</span><span>2. Nhiếp ảnh</span><span>3. Quay phim (Videography)</span><span>4. Thiết kế</span><span>5. Xây dựng thương hiệu</span><span>6. Và mọi thứ dính tới sáng tạo</span>
+  </div>
+</div>
+</main>
+<footer>© <span id="year"></span> Chơi.Production. Good ideas. Good people. Good work.</footer>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+  var bar = document.getElementById('progress');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[data-page]'));
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  var lastY = window.scrollY;
+  links.forEach(function(link){
+    var active = link.getAttribute('data-page') === currentPage;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page');
+  });
+  function onScroll(){
+    var y = window.scrollY;
+    if (y > 240 && y > lastY) nav.classList.add('hidden');
+    else if (y < lastY || y <= 240) nav.classList.remove('hidden');
+    lastY = y;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(event){
+      var target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      if (target.id) history.replaceState(null, '', '#' + target.id);
+    });
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function(element){ element.classList.add('in'); });
+  } else {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    reveals.forEach(function(element){ observer.observe(element); });
+  }
+  var words = ['Content / Mạng xã hội','Nhiếp ảnh','Quay phim','Thiết kế','Thương hiệu'];
+  var phrase = document.getElementById('phrase');
+  if (phrase && !reduce) {
+    var index = 0;
+    phrase.textContent = words[0];
+    window.setInterval(function(){
+      phrase.classList.add('fade');
+      window.setTimeout(function(){
+        index = (index + 1) % words.length;
+        phrase.textContent = words[index];
+        phrase.classList.remove('fade');
+      }, 350);
+    }, 2200);
+  }
+})();
+</script>
+</body>
+</html>
